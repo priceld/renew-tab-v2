@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Card } from './components/Card';
+import styled, { ThemeProvider } from 'styled-components/macro';
+import { FlashCardForm } from './components/FlashCardForm';
+import { GlobalStyles } from './components/GlobalStyles';
+import { FlashCard } from './components/FlashCard';
+
+const theme = {
+  primary: 'hsl(240deg 100% 60%)',
+  primaryLight: 'hsl(235deg 100% 62%)',
+  white: 'hsl(0deg 0% 100%)',
+};
+
+
+const Wrapper = styled.div`
+  margin-top: 1.5rem;
+`;
 
 function App() {
+  function onSubmitNewFlashCard(front: string, back: string) {
+
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <ThemeProvider theme={theme}>
+        <Wrapper>
+          <Card>
+            <FlashCardForm></FlashCardForm>
+            {/* <FlashCard></FlashCard> */}
+          </Card>
+        </Wrapper>
+      </ThemeProvider>
+      <GlobalStyles />
     </div>
   );
 }
